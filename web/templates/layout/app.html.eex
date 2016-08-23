@@ -20,6 +20,17 @@
           </ul>
         </nav>
         <span class="logo"></span>
+        <%= if @current_user do %>
+          <ul class='auth-bar'>
+            <li>Welcome, <%= @current_user.name %></li>
+            <li><%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn btn-danger" %></li>
+          </ul>
+        <% else %>
+          <%= link to: auth_path(@conn, :request, "github"), class: "btn btn-primary" do %>
+            <i class="fa fa-github"></i>
+            Login with GitHub
+          <% end %>
+        <% end %>
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>

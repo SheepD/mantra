@@ -17,6 +17,24 @@ config :mantra, Mantra.Endpoint,
   pubsub: [name: Mantra.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+config :ueberauth, Ueberauth,
+  providers: [
+    github: {Ueberauth.Strategy.Github, []}
+  ]
+
+config :ueberauth, Ueberauth.Strategy.Github.OAuth,
+  client_id: System.get_env("GITHUB_CLIENT_ID"),
+  client_secret: System.get_env("GITHUB_CLIENT_SECRET")
+
+# config :guardian, Guardian,
+#   allowed_algos: ["HS512"], # optional
+#   verify_module: Guardian.JWT,  # optional
+#   issuer: "Mantra",
+#   ttl: { 30, :days },
+#   verify_issuer: true, # optional
+#   secret_key: <guardian secret key>,
+#   serializer: Mantra.GuardianSerializer
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
