@@ -1,0 +1,3 @@
+export GITHUB_CLIENT_ID=<Your Github Client ID>
+export GITHUB_CLIENT_SECRET=<Your Github Client secret>
+export PRODUCTION_URL="http://mangtra.herokuapp.com"
